@@ -1,4 +1,5 @@
 require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -34,15 +35,15 @@ const complaintSchema = new mongoose.Schema({
 const Complaint = mongoose.model("Complaint", complaintSchema);
 
 // routes
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, '../public')));
 app.get("/", (req, res) => {
-    res.status(200).end('Homepage Works !');
+    res.status(200).send('/index.html');
 });
 app.get("/register", (req, res) => {
-    res.status(200).end('Register Works !');
+    res.status(200).send('/register.html');
 });
 app.get("/escalate", (req, res) => {
-    res.status(200).end('Escalate Works !');
+    res.status(200).send('/escalate.html');
 });
 // 404 Page
 app.get('*', (req, res) => {
