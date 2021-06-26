@@ -2,15 +2,16 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const Complaint = require('./db');
+const bodyParser = require('body-parser');
 
 // express app
 const app = express();
 const port = process.env.PORT || 3000;
 
-// routes
+// ROUTES
 app.use(express.static(path.join(__dirname, '../public')));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", (req, res) => {
     res.status(200).send('/index.html');
@@ -27,7 +28,7 @@ app.post("/register", (req, res) => {
     try {
         const complaint = new Complaint({
             email: req.body.email,
-            title: req.nody.title,
+            title: req.body.title,
             description: req.body.description,
             location: req.body.location
         });
