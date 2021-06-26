@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="/assets/virus-pngrepo-com.png" />
+    <title>Co-Resolve</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#"><span style='color:rgb(255, 80, 80);'>C<img
+                        src="/assets/virus-pngrepo-com.png" width="24px" />
+                </span>Resolve</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav">
+                    <a class="nav-link" aria-current="page" href="/">Home</a>
+                    <a class="nav-link" href="/register">File Complaint</a>
+                    <a class="nav-link active" aria-current="page" href="/escalate">Escalate Complaint</a>
+                </div>
+            </div>
+            <form method="GET" action="/escalate/search" class="d-flex">
+                <input class="form-control me-2" autocomplete="off" type="search" name="search"
+                    placeholder="Search complaints" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <!-- Carousal -->
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="https://source.unsplash.com/1400x300/?corona,virus
+            " class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://source.unsplash.com/1400x300/?corona,vaccine" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="https://source.unsplash.com/1400x300/?virus,vaccine" class="d-block w-100" alt="...">
+            </div>
+        </div>
+    </div>
+
+    <!-- Categories -->
+    <div class="row align-items-md-stretch my-4 mx-2">
+        <div class="col-md-6">
+            <div class="h-100 p-5 text-white bg-dark rounded-3">
+                <h2>Money Realted Problems</h2>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Molestiae enim fugiat amet porro ipsam
+                    aspernatur cum reiciendis laborum vitae soluta unde suscipit assumenda, nulla temporibus error, esse
+                    quis, rem placeat ut at ab culpa......</p>
+                <a href="/escalateMoney"><button class="btn btn-outline-light" type="button">Read More</button></a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="h-100 p-5 bg-light border rounded-3">
+                <h2>Hospital Beds Problem</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga autem fugit dolorum id aliquid
+                    repudiandae deleniti voluptatem doloribus. Consequuntur ex voluptatem nesciunt cupiditate provident
+                    dolor animi sed eligendi aperiam non, consequatur aliquid culpa repellendus...</p>
+                <a href="/escalateBeds"><button class="btn btn-outline-secondary" type="button">Read More</button></a>
+            </div>
+        </div>
+    </div>
+    <div class="row align-items-md-stretch my-4 mx-2">
+        <div class="col-md-6">
+            <div class="h-100 p-5 text-white bg-dark rounded-3">
+                <h2>Vaccination Problem</h2>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Error voluptatibus odit nemo debitis
+                    incidunt soluta ut deleniti fugiat. Eius blanditiis ipsam esse harum laboriosam earum molestias. Eos
+                    cumque accusamus minima non odit eligendi dolorum....</p>
+                <a href="/escalateVaccine"><button class="btn btn-outline-light" type="button">Read More</button></a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="h-100 p-5 bg-light border rounded-3">
+                <h2>Oxygen Cylinder Realted Problems</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum eligendi autem, velit quae ad soluta
+                    officia minus corporis sed, sapiente laborum porro libero ab beatae omnis consequuntur quis enim
+                    distinctio nulla, laudantium reiciendis eos?....</p>
+                <a href="/escalateCylinder"><button class="btn btn-outline-secondary" type="button">Read More</button></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

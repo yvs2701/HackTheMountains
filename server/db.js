@@ -17,10 +17,17 @@ const complaintSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    description: String,
+    description: {
+        type: String,
+        required: true
+    },
     location: {
         type: String,
         required: true,
+    },
+    category: {
+        type: String,
+        required: true
     }
 }, { timestamps: true });
 

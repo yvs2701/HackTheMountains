@@ -2,7 +2,6 @@ require('dotenv').config();
 const path = require('path');
 const express = require('express');
 const Complaint = require('./db');
-const bodyParser = require('body-parser');
 
 // express app
 const app = express();
@@ -10,37 +9,85 @@ const port = process.env.PORT || 3000;
 
 // ROUTES
 app.use(express.static(path.join(__dirname, '../public')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
+app.set('view engine', 'ejs');
 app.get("/", (req, res) => {
-    res.status(200).send('/index.html');
+    res.status(200).render('index');
 });
 app.get("/register", (req, res) => {
-    res.status(200).send('/register.html');
+    res.status(200).render('register');
 });
-app.get("/escalate", (req, res) => {
-    res.status(200).send('/escalate.html');
-});
-// post requests
+// post requests (from register)
 app.post("/register", (req, res) => {
     console.log(req.body);
     try {
         const complaint = new Complaint({
-            email: req.body.email,
-            title: req.body.title,
-            description: req.body.description,
-            location: req.body.location
+            email: req.body.email.trim(),
+            title: req.body.title.trim(),
+            description: req.body.description.trim(),
+            location: req.body.location.trim(),
+            category: req.body.category
         });
         complaint.save();
-        res.redirect("/escalate");
+        res.redirect(`/escalate`);
     } catch (err) {
         console.error(err);
     }
 });
+app.get("/escalate", (req, res) => {
+    res.status(200).render('escalate');
+});
+app.get("/escalateMoney", async (req, res) => {
+    await Complaint.find({ "category": "money" }, 'title description location').exec((err, result) => {
+        if (err)
+            console.error(err);
+        else {
+            res.status(200).render('escalateComplaints', { complaints: result });
+        }
+    });
+});
+app.get("/escalateBeds", async (req, res) => {
+    await Complaint.find({ "category": "beds" }, 'title description location').exec((err, result) => {
+        if (err)
+            console.error(err);
+        else {
+            res.status(200).render('escalateComplaints', { complaints: result });
+        }
+    });
+});
+app.get("/escalateVaccine", async (req, res) => {
+    await Complaint.find({ "category": "vaccine" }, 'title description location').exec((err, result) => {
+        if (err)
+            console.error(err);
+        else {
+            res.status(200).render('escalateComplaints', { complaints: result });
+        }
+    });
+});
+app.get("/escalateCylinder", async (req, res) => {
+    await Complaint.find({ "category": "cylinder" }, 'title description location').exec((err, result) => {
+        if (err)
+            console.error(err);
+        else {
+            res.status(200).render('escalateComplaints', { complaints: result });
+        }
+    });
+});
+// fetch data (from search)
+app.get("/escalate/search", async (req, res) => {
+    await Complaint.find({ $or: [{ "email": req.query['search'] }, { "title": req.query['search'] }, { "location": req.query['search'] }] }, 'title description location').exec((err, result) => {
+        if (err)
+            console.error(err);
+        else {
+            res.status(200).render('escalateComplaints', { complaints: result });
+        }
+    });
+});
 // 404 Page
 app.get('*', (req, res) => {
-    res.status(404).send('Page not found :(');
+    res.status(404).send('404...Page not found :(');
 });
 
 app.listen(port, () => {
