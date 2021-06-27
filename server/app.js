@@ -76,7 +76,7 @@ app.get("/escalateCylinder", async (req, res) => {
 });
 // fetch data (from search)
 app.get("/escalate/search", async (req, res) => {
-    await Complaint.find({ $or: [{ "email": req.query['search'] }, { "title": req.query['search'] }, { "location": req.query['search'] }] }, '_id title description location votes').exec((err, result) => {
+    await Complaint.find({ $or: [{ "email": req.query['search'] }, { "title": req.query['search'] }, { "location": req.query['search'] }, { "category": req.query['search'] }] }, '_id title description location votes').exec((err, result) => {
         if (err)
             console.error(err);
         else {
