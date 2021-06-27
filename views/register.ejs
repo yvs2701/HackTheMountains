@@ -32,6 +32,10 @@
     </nav>
 
     <!-- Registration form -->
+    <div class="py-5 text-center">
+        <h2>File Your Complaint</h2>
+        <p class="lead">There is a form given below which can be filled to submit your grievances .</p>
+    </div>
     <div class="container">
         <form method="POST" action="/register" class="mb-3 p-3">
             <label for="title" class="form-label">Title</label>
@@ -44,7 +48,7 @@
             <input id="email" class="form-control me-2 mb-2" autocomplete="off" type="email" name="email"
                 placeholder="name@email.com">
             <label for="location" class="form-label">Location</label>
-            <input id="location" class="form-control me-2 mb-2" autocomplete="off" type="text" name="location">
+            <input id="location" class="form-control me-2 mb-2" autocomplete="off" type="text" name="location" placeholder="X/ABC Sahara street, Indira Nagar, Lucknow-226001, Uttar Pradesh">
             <select name="category" id="categories" class="form-select form-select-sm w-25 mb-3"
                 aria-label=".form-select-sm example">
                 <option selected>Select</option>

@@ -28,6 +28,10 @@ const complaintSchema = new mongoose.Schema({
     category: {
         type: String,
         required: true
+    },
+    votes: {
+        type: Number,
+        default: 0
     }
 }, { timestamps: true });
 

@@ -30,20 +30,21 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container mt-3">
         <% complaints.forEach((element)=> {%>
-            <div class="card">
+            <div class="card m-2">
                 <div class="card-body">
                     <h5 class="card-title">
                         <%= element.title %>
                     </h5>
                     <p class="card-text">
-                        <%=element.description %>
+                        <%= element.description %>
                     </p>
                     <h5>Location:</h5>
                     <p>
                         <%= element.location %>
                     </p>
+                    <button class="badge rounded-pill bg-light text-dark">Vote | <%= element.votes %></button>
                 </div>
             </div>
             <% }); %>

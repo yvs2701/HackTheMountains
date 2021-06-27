@@ -21,7 +21,6 @@ app.get("/register", (req, res) => {
 });
 // post requests (from register)
 app.post("/register", (req, res) => {
-    console.log(req.body);
     try {
         const complaint = new Complaint({
             email: req.body.email.trim(),
@@ -40,7 +39,7 @@ app.get("/escalate", (req, res) => {
     res.status(200).render('escalate');
 });
 app.get("/escalateMoney", async (req, res) => {
-    await Complaint.find({ "category": "money" }, 'title description location').exec((err, result) => {
+    await Complaint.find({ "category": "money" }, '_id title description location votes').exec((err, result) => {
         if (err)
             console.error(err);
         else {
@@ -49,7 +48,7 @@ app.get("/escalateMoney", async (req, res) => {
     });
 });
 app.get("/escalateBeds", async (req, res) => {
-    await Complaint.find({ "category": "beds" }, 'title description location').exec((err, result) => {
+    await Complaint.find({ "category": "beds" }, '_id title description location votes').exec((err, result) => {
         if (err)
             console.error(err);
         else {
@@ -58,7 +57,7 @@ app.get("/escalateBeds", async (req, res) => {
     });
 });
 app.get("/escalateVaccine", async (req, res) => {
-    await Complaint.find({ "category": "vaccine" }, 'title description location').exec((err, result) => {
+    await Complaint.find({ "category": "vaccine" }, '_id title description location votes').exec((err, result) => {
         if (err)
             console.error(err);
         else {
@@ -67,7 +66,7 @@ app.get("/escalateVaccine", async (req, res) => {
     });
 });
 app.get("/escalateCylinder", async (req, res) => {
-    await Complaint.find({ "category": "cylinder" }, 'title description location').exec((err, result) => {
+    await Complaint.find({ "category": "oxygen" }, '_id title description location votes').exec((err, result) => {
         if (err)
             console.error(err);
         else {
@@ -77,7 +76,7 @@ app.get("/escalateCylinder", async (req, res) => {
 });
 // fetch data (from search)
 app.get("/escalate/search", async (req, res) => {
-    await Complaint.find({ $or: [{ "email": req.query['search'] }, { "title": req.query['search'] }, { "location": req.query['search'] }] }, 'title description location').exec((err, result) => {
+    await Complaint.find({ $or: [{ "email": req.query['search'] }, { "title": req.query['search'] }, { "location": req.query['search'] }] }, '_id title description location votes').exec((err, result) => {
         if (err)
             console.error(err);
         else {
